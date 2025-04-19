@@ -1,0 +1,7 @@
+/.vs
+/.vscode
+/CMakeLists.txt
+/CMakePresets.json
+/main.cpp
+/out
+/out.exe
