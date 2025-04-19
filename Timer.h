@@ -1,7 +1,4 @@
-﻿#ifndef TIMER_H
-#define TIMER_H
-
-#pragma once
+﻿#pragma once
 
 #include <iostream>
 #include <chrono>
@@ -36,5 +33,3 @@ class Timer {
 		bool running = false;
 		
 };
-
-#endif // TIMER_H
