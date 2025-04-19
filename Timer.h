@@ -15,7 +15,7 @@ class Timer {
 			time_ = timer;
 			running = true;
 			finished = false;
-			std::thread([=]() {
+			std::thread([timer, lambda = std::forward<Lambda>(lambda)]() mutable {
 				std::this_thread::sleep_for(std::chrono::milliseconds((int)(timer * 1000)));
 				lambda();
 				}).detach();
