@@ -9,3 +9,5 @@
 # Files used to test out of scope functions
 /[Oo]ther.cpp
 /[Oo]ther.h
+/[Oo]ther[Oo]ther.cpp
+/[Oo]ther[Oo]ther.h
