@@ -1,33 +1,44 @@
-﻿// Timer.cpp : Defines the entry point for the application.
-//
-
-#include "Timer.h"
+﻿#include "Timer.h"
 
 Timer::Timer(){}
 Timer::~Timer() {}
 
+/**
+* Starts the timer without a lambda function.
+*/
 void Timer::start(float timer){
-	time(&start_time_);
+	start_time_ = std::chrono::steady_clock::now();
 	time_ = timer;
 	running = true;
 	finished = false;
 }
 
-float Timer::check_time(){
-	time_t curr_time, time_diff;
-	time(&curr_time);
-	time_diff = curr_time - start_time_;
-	if (time_diff >= time_){
-		finished = true;
-		time_diff = time_;
-	}
-	return time_diff;
+/*
+* This function will check the time elapsed since the timer started.
+* If the time elapsed is greater than or equal to the timer set, it will
+* set finished to true and return the time elapsed.
+*/
+float Timer::check_time() {
+    if (!running) {
+        std::cerr << "Timer is not running!" << std::endl;
+        return 0.0;
+    }
+    auto curr_time = std::chrono::steady_clock::now();
+    auto time_diff = std::chrono::duration<float>(curr_time - start_time_).count();
+    if (time_diff >= time_) {
+        finished = true;
+    }
+
+    return time_diff;
 }
 
+/*
+* This function will check if the timer is done.
+* Only returns true if the timer was started since the last time it finished (or if it never finished).
+*/
 bool Timer::check_done(){
-	if(check_time() >= time_ && running){
+	if(check_time() >= time_ && running)
 		running = false;
-		return true;
-	}
-	return false;
+	
+	return finished;
 }

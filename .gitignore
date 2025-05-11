@@ -5,3 +5,7 @@
 /main.cpp
 /out
 /out.exe
+
+# Files used to test out of scope functions
+/[Oo]ther.cpp
+/[Oo]ther.h
