@@ -3,7 +3,6 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include <ctime>
 
 class Timer {
 	public:
